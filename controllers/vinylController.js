@@ -9,13 +9,43 @@ exports.index = asyncHandler(async (res, req, next)  => {
         Vinyl.countDocuments({}).exec(),
         Artist.countDocuments({}).exec(),
         Genre.countDocuments({}).exec(),
-        Vinyl.find({}).sort({ release_date: -1 }).limit(5).exec(),
     ]);
     res.render("index", {
-        title: "Vinyl Inventory",
+        title: "Vintage Vinyls Inventory Manager",
         vinyl_number: numVinyls,
         artist_number: numArtists,
         genre_number: numGenres,
-        new_releases: newReleases,
     })
+})
+
+exports.vinyl_list = asyncHandler(async (res, req, next ) => {
+    res.send("Not implemented yet");
+})
+
+exports.vinyl_detail = asyncHandler(async (res, req, next) => {
+    res.send("Not implemented yet");
+})
+
+exports.vinyl_create_get = asyncHandler(async (res, req, next ) => {
+    res.send("Not implemented yet");
+})
+
+exports.vinyl_create_post = asyncHandler(async (res, req, next) => {
+    res.send("Not implemented yet");
+})
+
+exports.vinyl_delete_get = asyncHandler(async (res, req, next ) => {
+    res.send("Not implemented yet");
+})
+
+exports.vinyl_delete_post = asyncHandler(async (res, req, next) => {
+    res.send("Not implemented yet");
+})
+
+exports.vinyl_update_get = asyncHandler(async (res, req, next ) => {
+    res.send("Not implemented yet");
+})
+
+exports.vinyl_update_post = asyncHandler(async (res, req, next) => {
+    res.send("Not implemented yet");
 })

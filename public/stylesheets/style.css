@@ -1,8 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Bayon');
+@import url('https://fonts.googleapis.com/css2?family=Monoton');
+
 body {
-  padding: 50px;
+  padding: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0px;
 }
 
 a {
   color: #00B7FF;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 5vmin 8vmin;
+  background-color: black;
+  align-items: center;
+}
+
+#header-vv {
+  color: white;
+  font-size:  8vmin;
+  font-family: 'Monoton';
+}
+
+#header-im{
+  color: white;
+  font-size: 5vmin;
+  font-family: 'Bayon';
+}
+
+#header-nav{
+  display: flex;
+  gap: 5vmin;
+  font-size: 4vmin;
+  font-family: 'Bayon';
+  color: white;
+}
+
+header a {
+  text-decoration: none;
 }

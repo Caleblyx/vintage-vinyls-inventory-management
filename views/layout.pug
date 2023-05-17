@@ -1,7 +1,16 @@
 doctype html
 html
   head
-    title= title
+    title= "Vintage Vinyls Inventory Manager"
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
+    header
+      a(href="/")
+        span(id="header-vv") Vintage Vinyls 
+        span(id="header-im") Inventory Manager
+      nav(id="header-nav")
+        a(href="/") Vinyls
+        a(href="/") Genres 
+        a(href="/") Artists
+      
     block content
