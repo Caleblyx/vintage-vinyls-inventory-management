@@ -1,0 +1,15 @@
+extends layout 
+
+block content 
+    div(id="genre-form-page")
+        h1= title 
+
+        form(method="POST" action="")
+            if errors 
+                ul(id="form-errors") 
+                    for error in errors 
+                        li!= error.msg
+            div.form-group
+                label(for='name') Name:
+                input#name.form-control(type='text', placeholder='Name of artist' name='name' required='true' value=(undefined===genre ? '' : genre.name) )
+            button.button-27.btn-primary(type='submit') Submit 

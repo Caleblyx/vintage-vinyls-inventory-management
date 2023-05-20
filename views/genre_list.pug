@@ -1,0 +1,11 @@
+extends layout 
+
+block content 
+    div(id="genre-list-page")
+        a(class="button-27" href="/catalog/genre/create") Add Genre
+        h1= title
+        div(class="genre-list")
+            each genre in all_genres
+                div(class="genre-list-card")
+                    div(class="genre-img") Placeholder
+                    a(class="genre-name" href=genre.url) #{genre.name}

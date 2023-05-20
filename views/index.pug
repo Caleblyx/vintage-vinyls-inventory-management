@@ -1,5 +1,11 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  div(id="landing-page")
+    h1= title
+    p(class="landing-page-msgs") Manage your inventory by viewing, creating, updating, and deleting records of vinyls.
+    h1 Your inventory at a glance
+    ul
+      li(class="landing-page-msgs") Number of vinyls: #{vinyl_number}
+      li(class="landing-page-msgs") Number of artists: #{artist_number}
+      li(class="landing-page-msgs") Number of genres: #{genre_number}

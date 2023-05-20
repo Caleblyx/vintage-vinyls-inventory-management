@@ -1,0 +1,17 @@
+extends layout 
+
+block content 
+    div(id="artist-detail-page")
+        h1 #{title} #{artist.name}
+        div(class="detail-buttons")
+            a(class="button-27" href=`${artist.url}/update`) Update Artist
+            a(class="button-27" href=`${artist.url}/delete`) Delete Artist
+        h1 Vinyls by Artist
+        div(class="vinyl-list")
+            each vinyl in all_vinyls
+                div(class="vinyl-list-card")
+                    div(class="vinyl-img") Placeholder
+                    a(class="vinyl-title" href=vinyl.url) #{vinyl.title}
+                    p #{vinyl.artist.name}
+                    p $#{vinyl.price}
+

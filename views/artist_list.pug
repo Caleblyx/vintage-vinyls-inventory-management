@@ -1,0 +1,11 @@
+extends layout 
+
+block content 
+    div(id="artist-list-page")
+        a(class="button-27" href="/catalog/artist/create") Add Artist
+        h1= title
+        div(class="artist-list")
+            each artist in all_artists
+                div(class="artist-list-card")
+                    div(class="artist-img") Placeholder
+                    a(class="artist-name" href=artist.url) #{artist.name}

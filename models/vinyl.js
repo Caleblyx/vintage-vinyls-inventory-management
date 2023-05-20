@@ -5,8 +5,8 @@ const Schema = mongoose.Schema;
 
 const VinylSchema = new Schema({
     title: { type: String, required: true },
-    artist: { type: Schema.Types.ObjectId, required: true },
-    genre: { type: Schema.Types.ObjectId, required: true },
+    artist: { type: Schema.Types.ObjectId, ref: "Artist", required: true },
+    genre: [{ type: Schema.Types.ObjectId, ref: "Genre" }],
     album_release_date: { type: Date, required: true},
     vinyl_release_date: { type: Date, required: true },
     price: { type: Schema.Types.Decimal128, required: true },
@@ -14,12 +14,31 @@ const VinylSchema = new Schema({
 })
 
 VinylSchema.virtual("url").get(function(){
-    return `/catalog/album/${this._id}`;
+    return `/catalog/vinyl/${this._id}`;
 });
 
-VinylSchema.virtual("vinyl_release_date_formatted")(function(){
-    return this.release_date 
+VinylSchema.virtual("album_release_date_formatted").get(function(){
+    return this.album_release_date 
+        ? DateTime.fromJSDate(this.album_release_date).toLocaleString(DateTime.DATE_MED) : "";
+});
+
+VinylSchema.virtual("vinyl_release_date_formatted").get(function(){
+    return this.vinyl_release_date 
         ? DateTime.fromJSDate(this.vinyl_release_date).toLocaleString(DateTime.DATE_MED) : "";
+});
+
+VinylSchema.virtual("album_release_date_form_formatted").get(function(){
+    return this.album_release_date 
+        ? DateTime.fromJSDate(this.album_release_date).toFormat("yyyy-MM-dd") : "";
+});
+
+VinylSchema.virtual("vinyl_release_date_form_formatted").get(function(){
+    return this.vinyl_release_date 
+        ? DateTime.fromJSDate(this.vinyl_release_date).toFormat("yyyy-MM-dd") : "";
+});
+
+VinylSchema.virtual("price_form_formatted").get(function() {
+    return this.price.toString();
 })
 
-module.exports = mongoose.Model("Vinyl", VinylSchema);
+module.exports = mongoose.model("Vinyl", VinylSchema);

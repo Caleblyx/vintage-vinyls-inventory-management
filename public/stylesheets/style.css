@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Bayon');
 @import url('https://fonts.googleapis.com/css2?family=Monoton');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@800&family=Roboto+Condensed&display=swap');
 
 body {
   padding: 0px;
@@ -41,4 +42,237 @@ header {
 
 header a {
   text-decoration: none;
+}
+
+#vinyl-detail-page,
+#artist-detail-page,
+#artist-list-page,
+#genre-detail-page,
+#vinyl-list-page,
+#genre-list-page,
+#landing-page {
+  padding: 5vmin 8vmin;
+}
+
+.landing-page-msgs{
+  font-size: 3vmin;
+}
+
+#vinyl-list-page{
+
+}
+
+.artist-list,
+.genre-list,
+.vinyl-list{
+  display: flex;
+  gap: 4vmin;
+  flex-wrap: wrap;
+}
+
+.vinyl-list-card{
+  width: 40vmin;
+  height: 72vmin;
+  box-shadow: 0px 1px 13px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: left;
+  justify-content: center;
+  flex-direction: column;
+  background: #fff;
+  padding: 2vmin;
+  font-size: 2vmin;
+}
+
+.vinyl-img{
+  align-self: center;
+  width: 90%;
+  height: 50%;
+  background-color: beige;
+}
+
+.vinyl-title{
+  font-family: "Bayon";
+  font-size: 3vmin;
+}
+
+.genre-list-card{
+  width: 50vmin;
+  height: 25vmin;
+  border-radius: 20px;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 1vmin 2vmin;
+  box-sizing: border-box;
+}
+
+a.genre-name{
+  color: white;
+  font-family: "Bayon";
+  font-size: 5vmin;
+  text-decoration: none;
+}
+
+.artist-list-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 50vmin;
+  height: 25vmin;
+  box-shadow: 1vmin 1vmin 3vmin;
+  padding: 4vmin;
+  box-sizing: border-box;
+  border-radius: 15vmin;
+  background-color: black;
+}
+
+a.artist-name{
+  color: white;
+  font-family: "Bayon";
+  font-size: 3vmin;
+  text-decoration: none;
+}
+
+div.artist-img {
+  border-radius: 10vmin;
+  background-color: white;
+  height: 20vmin;
+  width: 20vmin;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#vinyl-detail-page{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8vmin;
+}
+
+.vinyl-detail-img{
+  width: 50vmin;
+  height: 50vmin;
+  border: solid black 1px;
+}
+
+.vinyl-detail-name{
+  font-size: 5vmin;
+}
+
+a.vinyl-detail-artist{
+  font-size: 4vmin;
+  text-decoration: none;
+  font-weight: 800;
+  color: black;
+}
+
+.vinyl-details {
+  font-size: 2vmin;
+}
+
+.button-27 {
+  appearance: none;
+  background-color: #000000;
+  border: 2px solid #1A1A1A;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  min-height: 60px;
+  min-width: 0;
+  outline: none;
+  padding: 16px 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 20vmin;
+  will-change: transform;
+}
+
+.button-27:disabled {
+  pointer-events: none;
+}
+
+.button-27:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.button-27:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 2vmin;
+}
+
+.form-groups {
+  display: flex;
+  gap: 5vmin;
+  width: 100%;
+}
+.form-group {
+  flex-direction: column;
+  display: flex;
+  justify-content: flex-start;
+  gap: 2vmin;
+  width: 100%;
+}
+
+#artist.form-control{
+  height: 5vmin;
+}
+
+.form-control  {
+  width:  100%;
+  height: 2vmin;
+  padding: 1vmin;
+}
+
+.btn.btn-primary  {
+  width: 30%;
+}
+
+label {
+  font-size: 3vmin;
+}
+
+.genre-label  {
+  font-size:  2vmin;
+}
+
+#genre-form-page,
+#artist-form-page,
+#vinyl-form-page {
+  width: 40%;
+  padding-left:  30%
+}
+
+#form-errors{
+  color: #ff3838;
+  padding: 1vmin;
+  background-color: rgba(255,38,38, 0.05);
+  border: solid 1px #ff3838;
+  border-radius: 10px;
+  list-style: none;
+}
+
+.detail-buttons{
+  display: flex;
+  gap: 1vmin;
 }

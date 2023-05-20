@@ -1,0 +1,23 @@
+extends layout 
+
+block content 
+    div(id="vinyl-detail-page")
+        div(class="vinyl-detail-img") placeholder 
+        div(class="vinyl-detail")
+            h1(class="vinyl-detail-name") #{vinyl.title}
+            a(class="vinyl-detail-artist" href=vinyl.artist.url) #{vinyl.artist.name}
+            h3(class="vinyl-details") Album release date: #{vinyl.album_release_date_formatted}
+            h3(class="vinyl-details") Vinyl release date: #{vinyl.vinyl_release_date_formatted}
+            h3(class="vinyl-details") Price: $#{vinyl.price}
+            h3(class="vinyl-details") Quantity in stock : #{vinyl.number_in_stock}
+            h3(class="vinyl-details") Genres:
+                each genre, index in vinyl.genre 
+                    if index < vinyl.genre.length - 1
+                        |  
+                        a(href=genre.url) #{genre.name},
+                    else 
+                        |  
+                        a(href=genre.url) #{genre.name}
+            div(class="detail-buttons")
+                a(class="button-27" href=`${vinyl.url}/update`) Update Vinyl
+                a(class="button-27" href=`${vinyl.url}/delete`) Delete Vinyl
