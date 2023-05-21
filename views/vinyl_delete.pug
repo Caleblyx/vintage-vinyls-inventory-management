@@ -2,7 +2,11 @@ extends layout
 
 block content 
     div(id="vinyl-detail-page")
-        div(class="vinyl-detail-img") placeholder 
+        div(class="vinyl-detail-img") 
+            if vinyl.img.data
+                img(src=`data:image/${vinyl.img.contentType};base64,${vinyl.img.data.toString('base64')}`)
+            else
+                p placeholder
         div(class="vinyl-detail")
             h1(class="vinyl-detail-name") #{vinyl.title}
             a(class="vinyl-detail-artist" href=vinyl.artist.url) #{vinyl.artist.name}
@@ -20,4 +24,4 @@ block content
                         a(href=genre.url) #{genre.name}
             h3 Are you sure you want to delete this Vinyl?
             form(class="detail-buttons" method="POST" action="")
-                a(class="button-27" type="submit") Delete Vinyl
+                button(class="button-27" type="submit") Delete Vinyl

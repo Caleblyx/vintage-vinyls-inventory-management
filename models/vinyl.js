@@ -11,6 +11,10 @@ const VinylSchema = new Schema({
     vinyl_release_date: { type: Date, required: true },
     price: { type: Schema.Types.Decimal128, required: true },
     number_in_stock: { type: Schema.Types.Number, required: true },
+    img: {
+        data: Buffer,
+        contentType: String
+    }
 })
 
 VinylSchema.virtual("url").get(function(){

@@ -44,6 +44,7 @@ header a {
   text-decoration: none;
 }
 
+
 #vinyl-detail-page,
 #artist-detail-page,
 #artist-list-page,
@@ -87,7 +88,14 @@ header a {
   align-self: center;
   width: 90%;
   height: 50%;
-  background-color: beige;
+  background-color: gainsboro;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vinyl-img img {
+  width: 80%;
 }
 
 .vinyl-title{
@@ -155,7 +163,10 @@ div.artist-img {
 .vinyl-detail-img{
   width: 50vmin;
   height: 50vmin;
-  border: solid black 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: gainsboro;
 }
 
 .vinyl-detail-name{

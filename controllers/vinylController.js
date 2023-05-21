@@ -1,5 +1,19 @@
+const fs = require('fs');
+const path = require('path');
 const asyncHandler = require('express-async-handler');
 const { body, validationResult } = require("express-validator");
+const multer = require('multer');
+
+let storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, ('../public/images/'))
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now());
+    }
+})
+
+let upload = multer({ storage: storage });
 
 const Vinyl = require("../models/vinyl");
 const Artist = require("../models/artist");
@@ -64,6 +78,7 @@ exports.vinyl_create_post = [
         }
         next();
     },
+    upload.single('image'),
     body("title",  "Album title must not be empty")
         .trim()
         .isLength({ min: 1 })
@@ -97,10 +112,12 @@ exports.vinyl_create_post = [
             album_release_date: req.body.album_release_date,
             vinyl_release_date: req.body.vinyl_release_date,
             price: req.body.price,
-            number_in_stock: req.body.number_in_stock
+            number_in_stock: req.body.number_in_stock,
+            img : {
+                data: fs.readFileSync(path.join('../public/images/' + req.file.filename)),
+                contentType: 'image/png'
+            }
         })
-        
-        console.log(vinyl);
 
         if (!errors.isEmpty()){
 
@@ -145,6 +162,7 @@ exports.vinyl_delete_get = asyncHandler(async (req, res, next ) => {
 })
 
 exports.vinyl_delete_post = asyncHandler(async (req, res, next) => {
+    console.log("hello");
     await Vinyl.findByIdAndDelete(req.params.id);
     res.redirect("/catalog/vinyl");
 })
@@ -185,6 +203,7 @@ exports.vinyl_update_post = [
         }
         next();
     },
+    upload.single('image'),
     body("title",  "Album title must not be empty")
         .trim()
         .isLength({ min: 1 })
@@ -219,6 +238,10 @@ exports.vinyl_update_post = [
             vinyl_release_date: req.body.vinyl_release_date,
             price: req.body.price,
             number_in_stock: req.body.number_in_stock,
+            img : req.file ? {
+                data: fs.readFileSync(path.join('../public/images/' + req.file.filename)),
+                contentType: 'image/png'
+            } : {},
             _id: req.params.id
         })
 
