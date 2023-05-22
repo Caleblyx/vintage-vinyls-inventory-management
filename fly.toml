@@ -1,0 +1,16 @@
+# fly.toml app configuration file generated for crimson-field-6337 on 2023-05-23T00:26:23+08:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "crimson-field-6337"
+primary_region = "sin"
+
+[env]
+  PORT = "8080"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true

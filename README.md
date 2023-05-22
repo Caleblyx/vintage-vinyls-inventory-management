@@ -1,0 +1,2 @@
+# Vintage Vinyls Inventory Management
+This is a simple inventory management web application written with Express.js. It uses MongoDB and the Pug/Jade view engine. View it [here](https://crimson-field-6337.fly.dev/).
