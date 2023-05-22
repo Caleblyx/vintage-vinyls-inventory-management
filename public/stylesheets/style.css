@@ -142,6 +142,7 @@ a.artist-name{
   text-decoration: none;
 }
 
+
 div.artist-img {
   border-radius: 10vmin;
   background-color: white;
@@ -151,6 +152,11 @@ div.artist-img {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.artist-img img{
+  width: 100%;
+  border-radius: 10vmin;
 }
 
 #vinyl-detail-page{
@@ -167,6 +173,34 @@ div.artist-img {
   justify-content: center;
   align-items: center;
   background-color: gainsboro;
+}
+
+div.artist-details {
+  display: flex;
+  align-items: center;
+  gap: 10vmin;
+}
+
+.artist-details-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 3vmin;
+}
+
+.artist-detail-img{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15vmin;
+  border: solid 1px black;
+  width: 30vmin;
+  height: 30vmin;
+}
+
+.artist-detail-img img{
+  width: 100%;
+  border-radius: 15vmin;
 }
 
 .vinyl-detail-name{

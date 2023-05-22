@@ -1,17 +1,24 @@
 extends layout 
-
+include vinyl_list_mixin
 block content 
     div(id="artist-detail-page")
         h1 #{title} #{artist.name}
-        div(class="detail-buttons")
-            a(class="button-27" href=`${artist.url}/update`) Update Artist
-            a(class="button-27" href=`${artist.url}/delete`) Delete Artist
-        h1 Vinyls by Artist
-        div(class="vinyl-list")
-            each vinyl in all_vinyls
-                div(class="vinyl-list-card")
-                    div(class="vinyl-img") Placeholder
-                    a(class="vinyl-title" href=vinyl.url) #{vinyl.title}
-                    p #{vinyl.artist.name}
-                    p $#{vinyl.price}
+        div(class="artist-details")
+            div(class="artist-detail-img") 
+                if artist.img.data
+                    img(src=`data:image/${artist.img.contentType};base64,${artist.img.data.toString('base64')}`)
+                else
+                    p placeholder
+            div(class="artist-details-right")
+                div(class="artist-detail-description")
+                    h2 Artist Description
+                    if artist.description 
+                        p #{artist.description} 
+                    else 
+                        p No description provided.
+                    
+                div(class="detail-buttons")
+                    a(class="button-27" href=`${artist.url}/update`) Update Artist
+                    a(class="button-27" href=`${artist.url}/delete`) Delete Artist
+        +list_vinyls("Vinyls by Artist", all_vinyls)
 

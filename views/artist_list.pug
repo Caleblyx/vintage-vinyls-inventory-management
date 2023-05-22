@@ -7,5 +7,9 @@ block content
         div(class="artist-list")
             each artist in all_artists
                 div(class="artist-list-card")
-                    div(class="artist-img") Placeholder
+                    div(class="artist-img") 
+                        if artist.img.data
+                            img(src=`data:image/${artist.img.contentType};base64,${artist.img.data.toString('base64')}`)
+                        else
+                            p placeholder  
                     a(class="artist-name" href=artist.url) #{artist.name}

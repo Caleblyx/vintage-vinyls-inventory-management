@@ -1,5 +1,20 @@
+const fs = require('fs');
+const path = require('path');
 const asyncHandler = require('express-async-handler');
 const { body, validationResult } = require("express-validator");
+
+const multer = require('multer');
+
+let storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, ('../public/images/'))
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now());
+    }
+})
+
+let upload = multer({ storage: storage });
 
 const Vinyl = require("../models/vinyl");
 const Artist = require("../models/artist");
@@ -49,6 +64,7 @@ exports.artist_create_post = [
         .withMessage("Name must not be empty")
         .isAlphanumeric('en-US', {ignore: ' '})
         .withMessage("Name contains invalid characters"),
+    upload.single('image'),
     body("description")
         .optional({ checkFalsy: true })
         .trim()
@@ -60,7 +76,11 @@ exports.artist_create_post = [
         
         const artist = new Artist({
             name: req.body.name,
-            description: req.body.description
+            description: req.body.description,
+            img : req.file ? {
+                data: fs.readFileSync(path.join('../public/images/' + req.file.filename)),
+                contentType: 'image/png'
+            } : {},
         })
 
         if (!errors.isEmpty()) {
@@ -128,7 +148,9 @@ exports.artist_update_get = asyncHandler(async (req, res, next ) => {
     const artist = await Artist.findById(req.params.id).exec();
 
     if(artist === null) {
-        res.redirect("/catalog/artist");
+        const err = new Error("Artist not found")
+        err.status = 404;
+        return next(err);
     }
 
     res.render("artist_form", {
@@ -138,6 +160,7 @@ exports.artist_update_get = asyncHandler(async (req, res, next ) => {
 })
 
 exports.artist_update_post = [
+    upload.single('image'),
     body("name")
         .trim()
         .isLength({ min: 1 })
@@ -157,9 +180,12 @@ exports.artist_update_post = [
         const artist = new Artist({
             name: req.body.name,
             description: req.body.description,
+            img : req.file ? {
+                data: fs.readFileSync(path.join('../public/images/' + req.file.filename)),
+                contentType: 'image/png'
+            } : {},
             _id: req.params.id
         })
-
         if (!errors.isEmpty()) {
             res.render("artist_form", {
                 title: "Update Artist",
@@ -168,8 +194,8 @@ exports.artist_update_post = [
             })
             return
         } else {
-            const artist = Artist.findByIdAndUpdate(req.params.id, artist, {});
-            res.redirect(artist.url);
+            const updatedArtist = await Artist.findByIdAndUpdate(req.params.id, artist, {});
+            res.redirect(updatedArtist.url);
         }
     })
 ]

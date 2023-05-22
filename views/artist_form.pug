@@ -4,7 +4,7 @@ block content
     div(id="artist-form-page")
         h1= title 
 
-        form(method="POST" action="")
+        form(method="POST" enctype="multipart/form-data" action="")
             if errors 
                 ul(id="form-errors") 
                     for error in errors 
@@ -15,4 +15,7 @@ block content
             div.form-group
                 label(for='description') Description:
                 textarea#description.form-control(name='description' rows="50" value=(undefined===artist ? '' : artist.description))
+            div.form-group
+                label(for="image") Artist Image:
+                input(type="file" name="image" value="") 
             button.button-27.btn-primary(type='submit') Submit 

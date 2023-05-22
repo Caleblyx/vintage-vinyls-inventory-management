@@ -1,17 +1,8 @@
 extends layout 
-
+include vinyl_list_mixin
 block content 
     div(id="vinyl-list-page")
         a(class="button-27" href="/catalog/vinyl/create") Add Vinyl
-        h1= title
-        div(class="vinyl-list")
-            each vinyl in all_vinyls
-                div(class="vinyl-list-card")
-                    div(class="vinyl-img") 
-                        if vinyl.img.data
-                            img(src=`data:image/${vinyl.img.contentType};base64,${vinyl.img.data.toString('base64')}`)
-                        else
-                            p placeholder                    
-                    a(class="vinyl-title" href=vinyl.url) #{vinyl.title}
-                    p #{vinyl.artist.name}
-                    p $#{vinyl.price}
+        +list_vinyls(title, all_vinyls)
+        
+        
